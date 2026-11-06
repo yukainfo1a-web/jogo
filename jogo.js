@@ -99,11 +99,11 @@ chute.addEventListener('input', (e) => {
     } else {
       listaResultados.classList.add('hidden');
     }
-  });
-ç
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.search-container')) {
-      listaResultados.classList.add('hidden');
-    }
-  });
+});
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#conteiner-procura')) {
+    listaResultados.classList.add('hidden');
+  }
+});
 
