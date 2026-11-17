@@ -1,0 +1,21 @@
+<!-- Salve como redimensionar.html e abra no navegador -->
+<input type="file" id="upload" accept="image/*">
+<textarea id="resultado" rows="6" cols="70" readonly onclick="this.select()"></textarea>
+
+<script>
+  document.getElementById('upload').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 100;  // Reduz para 100x100 pixels (leve e nítido para avatar)
+      canvas.height = 100;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, 100, 100);
+      
+      // Gera um Base64 curto, leve e já com o prefixo pronto
+      document.getElementById('resultado').value = canvas.toDataURL('image/webp', 0.8);
+    };
+    img.src = URL.createObjectURL(file);
+  });
+</script>
